@@ -5,6 +5,7 @@
  *   npm run try -- voice ./memo.wav           # #6（GCP のキーが必要）
  *   npm run try -- transcript "今日は鈴木さんに…"  # #6 の文字起こし以降だけ
  */
+import '../src/node/load-env.ts';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 

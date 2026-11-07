@@ -27,6 +27,21 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: flutter build web --release --base-href /${{ github.event.repository.name }}/
+      # 検証画面（DiffNote ラボ）を /lab/ に同梱する
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - name: Build lab
+        working-directory: backend
+        run: |
+          npm ci
+          npm run typecheck
+          npm test
+          npm run build:lab
+          mkdir -p ../build/web/lab
+          cp -R dist-lab/. ../build/web/lab/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

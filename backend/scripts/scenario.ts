@@ -5,6 +5,7 @@
  *
  * 架空の定食屋でバイトを始めた大学生のメモ。登場人物はすべて架空。
  */
+import '../src/node/load-env.ts';
 import { config } from '../src/config.ts';
 import { traces } from '../src/gemini.ts';
 import { Pipeline, type IngestResult } from '../src/pipeline.ts';

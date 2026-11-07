@@ -3,6 +3,7 @@
  *   npm run eval:classify
  *   GEMINI_MODEL=別のモデル npm run eval:classify   # モデルを比べる
  */
+import '../src/node/load-env.ts';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

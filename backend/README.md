@@ -2,6 +2,17 @@
 
 新人・学生バイトが受けた指示の**食い違い**を見つけるバックエンドです。Gemini を呼ぶ #1〜#10 を実装しています。
 
+## DiffNote ラボ（ブラウザで試す）
+
+https://df-dev-kuma.github.io/diff-note-mock/lab/
+
+- サーバーなしで、#1〜#10 の処理をブラウザで動かし、ブラウザから Gemini を直接呼ぶ
+- 各自の Google AI Studio の API キーを画面に入れる。キーとデータは localStorage にだけ保存される
+- 既定のモデルは `gemini-3.5-flash-lite`（`gemini-3.8-flash` は無料枠が 1 日 20 回と少ないため）
+- 音声（#6）は Speech-to-Text に GCP のキーが必要なので、文字起こし済みのテキストを入れて試す
+- 手元で動かす: `npm run dev:lab`（http://localhost:8000 ）。`main` に push すると GitHub Pages の `/lab/` に反映される
+- コードは `lab/`（画面）と `src/`（サーバー版と共通の処理）。Node 専用の処理（.env 読み込み・ファイル保存）は `src/node/` に分けてある
+
 ## セットアップ
 
 ```sh

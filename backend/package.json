@@ -10,7 +10,9 @@
     "eval:classify": "tsx scripts/eval-classify.ts",
     "try": "tsx scripts/try.ts",
     "typecheck": "tsc -p .",
-    "test": "node --import tsx --test test/*.test.ts"
+    "test": "node --import tsx --test test/*.test.ts",
+    "build:lab": "esbuild lab/main.ts --bundle --format=esm --platform=browser --target=es2022 --minify --sourcemap --outfile=dist-lab/main.js && cp lab/index.html dist-lab/index.html",
+    "dev:lab": "npm run build:lab && esbuild lab/main.ts --bundle --format=esm --platform=browser --target=es2022 --sourcemap --outfile=dist-lab/main.js --servedir=dist-lab --watch"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
+    "esbuild": "^0.28.2",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   },

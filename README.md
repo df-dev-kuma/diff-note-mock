@@ -5,6 +5,9 @@
 
 デモ: https://df-dev-kuma.github.io/diff-note-mock/
 
+**DiffNote ラボ（Gemini で食い違い検知を試す検証画面）: https://df-dev-kuma.github.io/diff-note-mock/lab/**
+自分の Google AI Studio の API キーを入れて使います。キーとデータはそのブラウザの中にだけ保存されます。
+
 ## できること（モック）
 
 - 音声 / テキスト / ファイル（PDF）で最初の版を作る

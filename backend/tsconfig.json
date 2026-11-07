@@ -6,9 +6,21 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "lib": [
+      "ES2023",
+      "DOM",
+      "DOM.Iterable"
+    ]
   },
-  "include": ["src", "scripts", "test"]
+  "include": [
+    "src",
+    "scripts",
+    "test",
+    "lab"
+  ]
 }

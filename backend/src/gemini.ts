@@ -1,9 +1,10 @@
 import { GoogleGenAI, type Part } from '@google/genai';
 
-import { config, geminiKey } from './config.ts';
+import { config, geminiKey, onConfigChange } from './config.ts';
 import type { AiTrace } from './types.ts';
 
 let client: GoogleGenAI | null = null;
+onConfigChange(() => (client = null));
 
 /**
  * 検証: Google AI Studio の API キー

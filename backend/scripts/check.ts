@@ -2,6 +2,7 @@
  * 接続確認: キーが読めているか、使えるモデル、テキスト生成と埋め込みが通るかを確かめる。
  *   npm run check
  */
+import '../src/node/load-env.ts';
 import { config, geminiKey } from '../src/config.ts';
 import { embed, gemini, generateJson } from '../src/gemini.ts';
 

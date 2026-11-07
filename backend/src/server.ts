@@ -1,3 +1,5 @@
+import './node/load-env.ts';
+
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -5,10 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { config } from './config.ts';
 import { traces } from './gemini.ts';
 import { Pipeline } from './pipeline.ts';
-import { Store } from './store.ts';
+import { fileStore } from './node/file-store.ts';
 
 const dataFile = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../data/state.json');
-const store = new Store(dataFile);
+const store = fileStore(dataFile);
 const pipeline = new Pipeline(store);
 
 type Handler = (body: any, params: string[]) => Promise<unknown> | unknown;

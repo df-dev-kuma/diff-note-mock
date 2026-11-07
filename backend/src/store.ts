@@ -1,6 +1,3 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import path from 'node:path';
-
 import type { Conflict, Instruction, Memo, Person, Topic } from './types.ts';
 
 export interface State {
@@ -14,12 +11,15 @@ export interface State {
 
 const empty = (): State => ({ memos: [], persons: [], instructions: [], topics: [], conflicts: [], seq: 0 });
 
-/** メモリ上のストア。file を渡すと JSON に保存する（本番の DB は未定） */
+/**
+ * メモリ上のストア。onSave を渡すと保存のたびに呼ぶ（本番の DB は未定）。
+ * Node ではファイル（src/node/file-store.ts）、ブラウザでは localStorage に保存する。
+ */
 export class Store {
   state: State;
 
-  constructor(private file?: string) {
-    this.state = file && existsSync(file) ? (JSON.parse(readFileSync(file, 'utf8')) as State) : empty();
+  constructor(initial?: State, private onSave?: (state: State) => void) {
+    this.state = initial ?? empty();
   }
 
   id(prefix: string): string {
@@ -28,9 +28,7 @@ export class Store {
   }
 
   save(): void {
-    if (!this.file) return;
-    mkdirSync(path.dirname(this.file), { recursive: true });
-    writeFileSync(this.file, JSON.stringify(this.state, null, 2));
+    this.onSave?.(this.state);
   }
 
   reset(): void {
