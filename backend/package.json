@@ -1,0 +1,30 @@
+{
+  "name": "diff-note-backend",
+  "version": "1.0.0",
+  "description": "食い違い検知のバックエンド（Gemini 呼び出し #1〜#10）",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "check": "tsx scripts/check.ts",
+    "scenario": "tsx scripts/scenario.ts",
+    "eval:classify": "tsx scripts/eval-classify.ts",
+    "try": "tsx scripts/try.ts",
+    "typecheck": "tsc -p .",
+    "test": "node --import tsx --test test/*.test.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^2.31.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  }
+}

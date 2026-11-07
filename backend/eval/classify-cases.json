@@ -1,0 +1,126 @@
+[
+  {
+    "id": "c01", "expected": "contradiction", "note": "違う人が違う量。変更の根拠なし",
+    "a": { "task": "味噌汁を作る", "target": "塩の量", "value": "小さじ1", "condition": null, "speaker": "佐藤（社員）", "date": "2026-11-03", "source": "口頭", "quote": "味噌汁の塩は小さじ1" },
+    "b": { "task": "味噌汁を作る", "target": "塩の量", "value": "小さじ1/2", "condition": null, "speaker": "田中（店長）", "date": "2026-11-05", "source": "口頭", "quote": "味噌汁の塩は小さじ1/2でいい" }
+  },
+  {
+    "id": "c02", "expected": "contradiction", "note": "棚の場所が逆",
+    "a": { "task": "皿洗い", "target": "洗った皿を戻す棚", "value": "右の棚", "condition": null, "speaker": "佐藤（社員）", "date": "2026-11-03", "source": "口頭", "quote": "洗った皿は右の棚に戻す" },
+    "b": { "task": "皿洗い", "target": "洗った皿を戻す棚", "value": "左の棚", "condition": null, "speaker": "鈴木（バイト）", "date": "2026-11-07", "source": "口頭", "quote": "お皿は左の棚って言ってた" }
+  },
+  {
+    "id": "c03", "expected": "contradiction", "note": "レジ締めの担当",
+    "a": { "task": "閉店作業", "target": "レジ締めの担当", "value": "最後に残ったバイトがやる", "condition": null, "speaker": "山本（先輩バイト）", "date": "2026-10-20", "source": "口頭", "quote": "レジ締めは最後に残ったバイトがやって" },
+    "b": { "task": "閉店作業", "target": "レジ締めの担当", "value": "社員がやる。バイトは触らない", "condition": null, "speaker": "田中（店長）", "date": "2026-10-25", "source": "口頭", "quote": "レジ締めは社員がやるからバイトは触らないで" }
+  },
+  {
+    "id": "c04", "expected": "contradiction", "note": "マニュアルと口頭の食い違い",
+    "a": { "task": "接客", "target": "お冷やを出すタイミング", "value": "着席後すぐ", "condition": null, "speaker": "マニュアル", "date": "2026-09-01", "source": "マニュアル", "quote": "お客様が着席されたらすぐにお冷やをお出しする" },
+    "b": { "task": "接客", "target": "お冷やを出すタイミング", "value": "注文を取るときに一緒に", "condition": null, "speaker": "佐藤（社員）", "date": "2026-11-02", "source": "口頭", "quote": "お冷やは注文取るときに一緒に持っていけばいいよ" }
+  },
+  {
+    "id": "c05", "expected": "contradiction", "note": "休憩の取り方",
+    "a": { "task": "休憩", "target": "6時間勤務の休憩時間", "value": "30分", "condition": null, "speaker": "山本（先輩バイト）", "date": "2026-10-10", "source": "口頭", "quote": "6時間なら休憩30分ね" },
+    "b": { "task": "休憩", "target": "6時間勤務の休憩時間", "value": "45分", "condition": null, "speaker": "佐藤（社員）", "date": "2026-10-18", "source": "口頭", "quote": "6時間勤務は45分休憩取って" }
+  },
+  {
+    "id": "c06", "expected": "contradiction", "note": "温度設定",
+    "a": { "task": "揚げ物", "target": "唐揚げの油の温度", "value": "170度", "condition": null, "speaker": "佐藤（社員）", "date": "2026-11-01", "source": "口頭", "quote": "唐揚げは170度" },
+    "b": { "task": "揚げ物", "target": "唐揚げの油の温度", "value": "180度", "condition": null, "speaker": "田中（店長）", "date": "2026-11-04", "source": "口頭", "quote": "唐揚げは180度で揚げて" }
+  },
+
+  {
+    "id": "d01", "expected": "conditional", "note": "土日だけ別",
+    "a": { "task": "盛り付け", "target": "ご飯の大盛り", "value": "250gまで受ける", "condition": null, "speaker": "佐藤（社員）", "date": "2026-11-03", "source": "口頭", "quote": "ご飯の大盛りは250gまで" },
+    "b": { "task": "盛り付け", "target": "ご飯の大盛り", "value": "受けない", "condition": "土日", "speaker": "田中（店長）", "date": "2026-11-05", "source": "口頭", "quote": "土日は混むからご飯の大盛りは受けない" }
+  },
+  {
+    "id": "d02", "expected": "conditional", "note": "ランチとディナーで違う",
+    "a": { "task": "接客", "target": "おしぼり", "value": "紙おしぼり", "condition": "ランチ", "speaker": "佐藤（社員）", "date": "2026-11-01", "source": "口頭", "quote": "ランチは紙おしぼりでいい" },
+    "b": { "task": "接客", "target": "おしぼり", "value": "布おしぼり", "condition": "ディナー", "speaker": "田中（店長）", "date": "2026-11-03", "source": "口頭", "quote": "夜は布おしぼりを出して" }
+  },
+  {
+    "id": "d03", "expected": "conditional", "note": "子ども連れのとき",
+    "a": { "task": "接客", "target": "席への案内", "value": "奥の席から埋める", "condition": null, "speaker": "山本（先輩バイト）", "date": "2026-10-12", "source": "口頭", "quote": "席は奥から埋めて" },
+    "b": { "task": "接客", "target": "席への案内", "value": "入口近くの広い席", "condition": "ベビーカーや子ども連れのとき", "speaker": "佐藤（社員）", "date": "2026-10-20", "source": "口頭", "quote": "ベビーカーの人は入口近くの広い席に" }
+  },
+  {
+    "id": "d04", "expected": "conditional", "note": "雨の日",
+    "a": { "task": "開店準備", "target": "入口のマット", "value": "普通のマット", "condition": null, "speaker": "マニュアル", "date": "2026-09-01", "source": "マニュアル", "quote": "入口には通常のマットを敷く" },
+    "b": { "task": "開店準備", "target": "入口のマット", "value": "吸水マットに替える", "condition": "雨の日", "speaker": "田中（店長）", "date": "2026-10-30", "source": "口頭", "quote": "雨の日は吸水マットに替えてね" }
+  },
+  {
+    "id": "d05", "expected": "conditional", "note": "団体予約",
+    "a": { "task": "配膳", "target": "料理を出す順番", "value": "できた順に出す", "condition": null, "speaker": "佐藤（社員）", "date": "2026-11-01", "source": "口頭", "quote": "料理はできた順に出していい" },
+    "b": { "task": "配膳", "target": "料理を出す順番", "value": "全員分そろってから出す", "condition": "団体予約のとき", "speaker": "田中（店長）", "date": "2026-11-02", "source": "口頭", "quote": "団体のときは全員分そろってから出して" }
+  },
+  {
+    "id": "d06", "expected": "conditional", "note": "テイクアウト",
+    "a": { "task": "会計", "target": "レシート", "value": "聞いてから渡す", "condition": null, "speaker": "山本（先輩バイト）", "date": "2026-10-05", "source": "口頭", "quote": "レシートはいるか聞いてから渡して" },
+    "b": { "task": "会計", "target": "レシート", "value": "必ず袋に入れる", "condition": "テイクアウト", "speaker": "佐藤（社員）", "date": "2026-10-15", "source": "口頭", "quote": "テイクアウトはレシートを必ず袋に入れて" }
+  },
+
+  {
+    "id": "u01", "expected": "update", "note": "11月から変更と明言",
+    "a": { "task": "会計", "target": "ご飯おかわり", "value": "何回でも無料", "condition": null, "speaker": "佐藤（社員）", "date": "2026-10-01", "source": "口頭", "quote": "ご飯おかわりは無料で何回でも" },
+    "b": { "task": "会計", "target": "ご飯おかわり", "value": "1回まで無料", "condition": null, "speaker": "貼り紙", "date": "2026-11-08", "source": "マニュアル", "quote": "11月10日から、ランチのご飯おかわりは1回まで無料" }
+  },
+  {
+    "id": "u02", "expected": "update", "note": "今日から変わった",
+    "a": { "task": "開店準備", "target": "開店前の集合時間", "value": "10時", "condition": null, "speaker": "田中（店長）", "date": "2026-10-01", "source": "口頭", "quote": "開店前は10時集合" },
+    "b": { "task": "開店準備", "target": "開店前の集合時間", "value": "9時45分", "condition": null, "speaker": "田中（店長）", "date": "2026-11-01", "source": "口頭", "quote": "今日から集合は9時45分に変わったから" }
+  },
+  {
+    "id": "u03", "expected": "update", "note": "新しいマニュアル",
+    "a": { "task": "衛生管理", "target": "手洗いの時間", "value": "15秒", "condition": null, "speaker": "旧マニュアル", "date": "2026-04-01", "source": "マニュアル", "quote": "手洗いは15秒以上" },
+    "b": { "task": "衛生管理", "target": "手洗いの時間", "value": "30秒", "condition": null, "speaker": "新マニュアル", "date": "2026-10-01", "source": "マニュアル", "quote": "改訂版：手洗いは30秒以上行うこと" }
+  },
+  {
+    "id": "u04", "expected": "update", "note": "メニュー改定",
+    "a": { "task": "注文", "target": "日替わり定食の価格", "value": "850円", "condition": null, "speaker": "佐藤（社員）", "date": "2026-09-15", "source": "口頭", "quote": "日替わりは850円" },
+    "b": { "task": "注文", "target": "日替わり定食の価格", "value": "900円", "condition": null, "speaker": "田中（店長）", "date": "2026-11-01", "source": "口頭", "quote": "来週から値上げで日替わりは900円になる" }
+  },
+  {
+    "id": "u05", "expected": "update", "note": "業者が変わった",
+    "a": { "task": "ゴミ出し", "target": "ゴミ出しの曜日", "value": "月・木", "condition": null, "speaker": "山本（先輩バイト）", "date": "2026-09-01", "source": "口頭", "quote": "ゴミは月曜と木曜" },
+    "b": { "task": "ゴミ出し", "target": "ゴミ出しの曜日", "value": "火・金", "condition": null, "speaker": "田中（店長）", "date": "2026-10-28", "source": "口頭", "quote": "回収業者が変わったから、これからは火曜と金曜ね" }
+  },
+  {
+    "id": "u06", "expected": "update", "note": "決まり直した",
+    "a": { "task": "接客", "target": "ポイントカード", "value": "全員に聞く", "condition": null, "speaker": "佐藤（社員）", "date": "2026-09-20", "source": "口頭", "quote": "ポイントカードは全員に聞いて" },
+    "b": { "task": "接客", "target": "ポイントカード", "value": "聞かなくてよい", "condition": null, "speaker": "田中（店長）", "date": "2026-11-03", "source": "口頭", "quote": "ポイントカード廃止になったから、もう聞かなくていいよ" }
+  },
+
+  {
+    "id": "s01", "expected": "supplement", "note": "量に加えてタイミング",
+    "a": { "task": "味噌汁を作る", "target": "塩の量", "value": "小さじ1/2", "condition": null, "speaker": "田中（店長）", "date": "2026-11-05", "source": "口頭", "quote": "味噌汁の塩は小さじ1/2" },
+    "b": { "task": "味噌汁を作る", "target": "塩の量", "value": "味見して足りなければ少し足す", "condition": null, "speaker": "佐藤（社員）", "date": "2026-11-06", "source": "口頭", "quote": "小さじ1/2入れて、味見して足りなければちょっと足して" }
+  },
+  {
+    "id": "s02", "expected": "supplement", "note": "棚の段まで指定",
+    "a": { "task": "皿洗い", "target": "洗った皿を戻す棚", "value": "右の棚", "condition": null, "speaker": "佐藤（社員）", "date": "2026-11-03", "source": "口頭", "quote": "洗った皿は右の棚" },
+    "b": { "task": "皿洗い", "target": "洗った皿を戻す棚", "value": "右の棚の下段（大皿）", "condition": null, "speaker": "山本（先輩バイト）", "date": "2026-11-04", "source": "口頭", "quote": "右の棚の、大皿は下の段ね" }
+  },
+  {
+    "id": "s03", "expected": "supplement", "note": "あいさつに一言追加",
+    "a": { "task": "接客", "target": "お見送りのあいさつ", "value": "ありがとうございました", "condition": null, "speaker": "マニュアル", "date": "2026-09-01", "source": "マニュアル", "quote": "お見送り時は「ありがとうございました」" },
+    "b": { "task": "接客", "target": "お見送りのあいさつ", "value": "常連さんには『またお待ちしてます』も添える", "condition": null, "speaker": "田中（店長）", "date": "2026-10-20", "source": "口頭", "quote": "常連さんには『またお待ちしてます』も言ってね" }
+  },
+  {
+    "id": "s04", "expected": "supplement", "note": "手順の追加",
+    "a": { "task": "閉店作業", "target": "床の掃除", "value": "モップがけする", "condition": null, "speaker": "佐藤（社員）", "date": "2026-10-01", "source": "口頭", "quote": "閉店後は床をモップがけ" },
+    "b": { "task": "閉店作業", "target": "床の掃除", "value": "モップの前にほうきで掃く", "condition": null, "speaker": "山本（先輩バイト）", "date": "2026-10-05", "source": "口頭", "quote": "モップの前にほうきで掃いておくと楽だよ" }
+  },
+
+  {
+    "id": "x01", "expected": "same", "note": "1/2 と半分",
+    "a": { "task": "味噌汁を作る", "target": "塩の量", "value": "小さじ1/2", "condition": null, "speaker": "田中（店長）", "date": "2026-11-05", "source": "口頭", "quote": "塩は小さじ1/2" },
+    "b": { "task": "味噌汁を作る", "target": "塩の量", "value": "小さじ半分", "condition": null, "speaker": "佐藤（社員）", "date": "2026-11-09", "source": "口頭", "quote": "塩は小さじ半分ね" }
+  },
+  {
+    "id": "x02", "expected": "same", "note": "言い方違い",
+    "a": { "task": "開店準備", "target": "開店前の集合時間", "value": "9時45分", "condition": null, "speaker": "田中（店長）", "date": "2026-11-01", "source": "口頭", "quote": "集合は9時45分" },
+    "b": { "task": "開店準備", "target": "開店前の集合時間", "value": "開店15分前（開店は10時）", "condition": null, "speaker": "佐藤（社員）", "date": "2026-11-03", "source": "口頭", "quote": "開店の15分前には来てね、開店10時だから" }
+  }
+]
