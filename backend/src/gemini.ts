@@ -49,16 +49,18 @@ export async function generateJson<T>(opts: JsonRequest): Promise<T> {
     { text: opts.prompt },
   ];
   const started = performance.now();
-  const res = await gemini().models.generateContent({
-    model: config.model,
-    contents: [{ role: 'user', parts }],
-    config: {
-      systemInstruction: opts.system,
-      responseMimeType: 'application/json',
-      responseJsonSchema: opts.schema,
-      temperature: 0.2,
-    },
-  });
+  const res = await withRetry(opts.step, () =>
+    gemini().models.generateContent({
+      model: config.model,
+      contents: [{ role: 'user', parts }],
+      config: {
+        systemInstruction: opts.system,
+        responseMimeType: 'application/json',
+        responseJsonSchema: opts.schema,
+        temperature: 0.2,
+      },
+    }),
+  );
   traces.push({ step: opts.step, ms: Math.round(performance.now() - started), model: config.model });
   const text = res.text;
   if (!text) throw new Error(`${opts.step}: Gemini の応答が空でした`);
@@ -69,15 +71,44 @@ export async function generateJson<T>(opts: JsonRequest): Promise<T> {
   }
 }
 
+export class QuotaExceededError extends Error {
+  constructor(step: string, model: string, retryAfterSec: number) {
+    const h = Math.ceil(retryAfterSec / 3600);
+    super(`${step}: ${model} の 1 日あたりの上限に達しました${h ? `（約 ${h} 時間後に回復）` : ''}。別のモデルを GEMINI_MODEL で指定するか、課金を有効にしてください`);
+  }
+}
+
+/** 混雑（503）・レート制限（429）・一時的なサーバーエラーは待ってやり直す */
+async function withRetry<T>(step: string, fn: () => Promise<T>, attempts = 5): Promise<T> {
+  for (let i = 1; ; i++) {
+    try {
+      return await fn();
+    } catch (e) {
+      const status = (e as { status?: number }).status;
+      const msg = (e as Error).message ?? '';
+      // 1 日の上限に達した 429 は待っても回復しないので、すぐに知らせる
+      const delay = Number(msg.match(/"retryDelay":"(\d+)s"/)?.[1] ?? 0);
+      if (status === 429 && (delay > 60 || /per day|PerDay/i.test(msg))) {
+        throw new QuotaExceededError(step, config.model, delay);
+      }
+      const retryable = status === 429 || (status !== undefined && status >= 500);
+      if (!retryable || i >= attempts) throw e;
+      const wait = Math.min(30_000, 1000 * 2 ** (i - 1)) + Math.floor(Math.random() * 500);
+      console.warn(`  (${step}: ${status} のため ${Math.round(wait / 1000)} 秒後にやり直し ${i}/${attempts - 1})`);
+      await new Promise((r) => setTimeout(r, wait));
+    }
+  }
+}
+
 /** #10 用: テキストを埋め込みベクトルにする */
 export async function embed(texts: string[]): Promise<number[][]> {
   if (texts.length === 0) return [];
   const started = performance.now();
-  const res = await gemini().models.embedContent({
+  const res = await withRetry('#10 埋め込み', () => gemini().models.embedContent({
     model: config.embeddingModel,
     contents: texts,
     config: { taskType: 'SEMANTIC_SIMILARITY' },
-  });
+  }));
   traces.push({ step: '#10 埋め込み', ms: Math.round(performance.now() - started), model: config.embeddingModel });
   return (res.embeddings ?? []).map((e) => e.values ?? []);
 }
